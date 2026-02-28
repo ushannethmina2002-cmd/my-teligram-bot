@@ -1,5 +1,6 @@
 telethon
-flask
 ccxt
-pandas
 requests
+feedparser
+pillow
+openpyxl
