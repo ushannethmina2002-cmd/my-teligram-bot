@@ -1,2 +1,5 @@
 telethon
 flask
+ccxt
+pandas
+requests
