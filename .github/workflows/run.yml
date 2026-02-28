@@ -1,0 +1,29 @@
+name: Python Bot 24/7 Run
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # සෑම විනාඩි 30කට වරක් ස්වයංක්‍රීයව රන් වේ
+  workflow_dispatch: # ඔබට අවශ්‍ය ඕනෑම වෙලාවක බටන් එකක් එබීමෙන් රන් කිරීමට
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Python Script
+        env:
+          API_ID: ${{ secrets.API_ID }}
+          API_HASH: ${{ secrets.API_HASH }}
+        run: python main.py
